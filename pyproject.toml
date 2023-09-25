@@ -31,7 +31,14 @@ build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = []
+dev-dependencies = [
+    "black>=23.9.1",
+    "ipykernel>=6.25.2",
+    "autopep8>=2.0.4",
+    "atcoder-tools>=2.13.0",
+    "online-judge-tools>=11.5.1",
+    "markupsafe==2.0.1",
+]
 
 
 
