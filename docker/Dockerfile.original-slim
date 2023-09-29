@@ -1,11 +1,12 @@
-FROM ubuntu:22.04
+FROM ubuntu:22.04 as builder
 
 
 RUN apt-get update && \
     apt install -y \
     git wget bzip2 \
+    python3 \
     gcc g++ gfortran libopenblas-dev liblapack-dev pkg-config libgeos-dev && \
-    apt-get clean && r -rf /var/lib/apt/lists/*
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
 
@@ -17,7 +18,6 @@ RUN ln -s /usr/local/pypy3.10-v7.3.12-linux64/bin/pypy3 /usr/local/bin/pypy3
 # pipを使えるようにする
 RUN wget https://bootstrap.pypa.io/get-pip.py
 RUN pypy3 get-pip.py --break-system-packages
-
 
 RUN pypy3 -mpip install --break-system-packages \
     numpy==1.24.1 \
@@ -36,3 +36,13 @@ RUN pypy3 -mpip install --break-system-packages \
     typing-extensions==4.4.0 \
     cppyy==2.4.1 \
     git+https://github.com/not522/ac-library-python
+
+
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+    build-essential libopenblas0 libgeos-c1v5 \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /usr/local/pypy3.10-v7.3.12-linux64 /usr/local/pypy3.10-v7.3.12-linux64
+RUN ln -s /usr/local/pypy3.10-v7.3.12-linux64/bin/pypy3 /usr/local/bin/pypy3

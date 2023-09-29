@@ -6,7 +6,7 @@ RUN apt-get update && \
     build-essential cmake curl git pkg-config \
     libopenblas-dev liblapack-dev gfortran \
     libgeos-dev \
-    pypy3-dev
+    python3
 
 WORKDIR /workspace
 
