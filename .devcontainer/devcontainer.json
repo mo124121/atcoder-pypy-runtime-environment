@@ -1,9 +1,10 @@
 {
-	"name": "Original Dockerfile",
-	"build": {
-		"context": "..",
-		"dockerfile": "../Dockerfile"
-	},
+	"dockerComposeFile": [
+		"docker-compose.yaml"
+	],
+	"service": "dev",
+	"workspaceFolder": "/workspace",
+	"shutdownAction": "stopCompose",
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -14,7 +15,7 @@
 				"ms-toolsai.jupyter"
 			]
 		}
-	}
+	},
 	// Uncomment the next line to run commands after the container is created.
 	// "postCreateCommand": "cat /etc/os-release",
 	// Configure tool-specific properties.
