@@ -1,0 +1,17 @@
+services:
+  dev:
+    image: mo124121/atcoder-pypy:dev-2023
+    volumes:
+      - type: bind
+        source: ..
+        target: /workspace
+      - type: bind
+        source: ../setting/.atcodertools.toml
+        target: /root/.atcodertools.toml
+      - type: volume #ホスト側で上書きしてしまわないように設定
+        source: dummy
+        target: /workspace/.venv
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+volumes:
+  dummy:
