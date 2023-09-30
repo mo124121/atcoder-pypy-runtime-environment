@@ -27,3 +27,11 @@ RUN rye sync --no-lock
 
 # 仮想環境の有効化
 RUN . .venv/bin/activate
+
+# atcoder-cli用
+RUN apt-get update && \
+    apt-get install -y nodejs npm
+RUN npm install n -g
+RUN n stable
+
+RUN npm install -g atcoder-cli
