@@ -2,6 +2,11 @@
 
 AtCoderにPyPyで参加するための欲張りセット
 
+> [!WARNING]
+> 2024/6/9現在、ABCでの利用が禁止されている機能を持ったatcoder-toolsを同梱するコンテナイメージを利用しています。
+> コンテスト中の利用はお控えください。
+> 詳細はこちら：https://info.atcoder.jp/entry/llm-abc-rules-ja
+
 ## 検証された環境
 
 ### devcontainer
